@@ -1,0 +1,532 @@
+Complete Docker Commands Handbook (Beginner to Advanced)
+
+This guide covers almost every Docker command you'll use in interviews, development, DevOps, and production. Commands are grouped by category with explanations and examples.
+
+1. Check Docker Installation
+Check Docker Version
+docker --version
+
+Example
+
+docker --version
+
+Output:
+Docker version 28.x.x
+Detailed Version Information
+docker version
+
+Shows
+
+Client version
+Server version
+API version
+Display Docker System Information
+docker info
+
+Shows
+
+Images
+Containers
+Storage Driver
+CPU
+Memory
+Networks
+Volumes
+2. Docker Help Commands
+
+General Help
+
+docker --help
+
+Help for Container Commands
+
+docker container --help
+
+Help for Images
+
+docker image --help
+
+Help for Networks
+
+docker network --help
+3. Working with Images
+Search Images
+docker search nginx
+
+Example
+
+docker search mysql
+
+Result
+
+NAME          DESCRIPTION
+mysql         Official MySQL Image
+Download an Image
+docker pull nginx
+
+Example
+
+docker pull ubuntu
+
+Downloads Ubuntu image.
+
+Download Specific Version
+docker pull node:20
+List Downloaded Images
+docker images
+
+or
+
+docker image ls
+
+Output
+
+REPOSITORY TAG IMAGE ID SIZE
+
+ubuntu latest 123abc 78MB
+node 20 1ab234 1.1GB
+Remove Image
+docker rmi nginx
+Force Remove
+docker rmi -f nginx
+Remove All Images
+docker rmi $(docker images -q)
+4. Working with Containers
+Create Container
+docker create nginx
+
+Creates container but does not start.
+
+Run Container
+docker run nginx
+Run Container in Background
+docker run -d nginx
+Run Interactive Container
+docker run -it ubuntu bash
+
+Explanation
+
+-i Interactive
+-t Terminal
+Run Container with Name
+docker run --name web nginx
+Run Container with Port Mapping
+docker run -p 8080:80 nginx
+
+Meaning
+
+Host Port : Container Port
+
+8080 -> 80
+Run Multiple Port Mappings
+docker run -p 8080:80 -p 443:443 nginx
+Auto Remove Container
+docker run --rm ubuntu
+
+Deletes container after exit.
+
+Restart Automatically
+docker run --restart always nginx
+Allocate CPU
+docker run --cpus=2 nginx
+Allocate Memory
+docker run -m 1g nginx
+Set Environment Variables
+docker run -e MYSQL_ROOT_PASSWORD=root mysql
+Mount Volume
+docker run -v myvolume:/data nginx
+Bind Mount
+docker run -v /home/user/project:/app node
+5. List Containers
+
+Running Containers
+
+docker ps
+
+All Containers
+
+docker ps -a
+
+Only IDs
+
+docker ps -q
+
+Latest Container
+
+docker ps -l
+6. Start, Stop, Restart
+
+Start
+
+docker start container_name
+
+Stop
+
+docker stop container_name
+
+Restart
+
+docker restart container_name
+
+Pause
+
+docker pause container_name
+
+Resume
+
+docker unpause container_name
+
+Kill Immediately
+
+docker kill container_name
+7. Remove Containers
+
+Remove
+
+docker rm container_name
+
+Force Remove
+
+docker rm -f container_name
+
+Remove All
+
+docker rm $(docker ps -aq)
+8. Container Logs
+
+View Logs
+
+docker logs container
+
+Follow Logs
+
+docker logs -f container
+
+Last 50 Lines
+
+docker logs --tail 50 container
+
+Last 10 Minutes
+
+docker logs --since 10m container
+9. Execute Commands
+
+Open Bash
+
+docker exec -it container bash
+
+Run Command
+
+docker exec container ls
+
+Run Python
+
+docker exec container python app.py
+10. Copy Files
+
+Host → Container
+
+docker cp file.txt container:/app
+
+Container → Host
+
+docker cp container:/app/file.txt .
+11. Inspect Container
+docker inspect container
+
+Inspect Image
+
+docker inspect nginx
+12. Monitor Usage
+
+Running Processes
+
+docker top container
+
+Resource Usage
+
+docker stats
+
+Single Container
+
+docker stats container
+13. Docker Volumes
+
+Create
+
+docker volume create data
+
+List
+
+docker volume ls
+
+Inspect
+
+docker volume inspect data
+
+Delete
+
+docker volume rm data
+
+Delete Unused
+
+docker volume prune
+14. Docker Networks
+
+List
+
+docker network ls
+
+Create
+
+docker network create mynetwork
+
+Inspect
+
+docker network inspect mynetwork
+
+Connect
+
+docker network connect mynetwork container
+
+Disconnect
+
+docker network disconnect mynetwork container
+
+Delete
+
+docker network rm mynetwork
+15. Docker Build
+
+Build Image
+
+docker build .
+
+Tag Image
+
+docker build -t myapp .
+
+Specific Dockerfile
+
+docker build -f Dockerfile.dev .
+
+No Cache
+
+docker build --no-cache .
+16. Docker Tag
+docker tag image myimage:v1
+17. Docker Push
+
+Login
+
+docker login
+
+Push
+
+docker push username/myapp:v1
+
+Logout
+
+docker logout
+18. Docker History
+docker history nginx
+
+Shows image layers.
+
+19. Docker Save & Load
+
+Save
+
+docker save nginx > nginx.tar
+
+Load
+
+docker load < nginx.tar
+20. Docker Export & Import
+
+Export Container
+
+docker export container > container.tar
+
+Import
+
+docker import container.tar
+21. Docker Commit
+
+Create image from container
+
+docker commit container myimage
+22. Docker Rename
+docker rename old new
+23. Docker Events
+docker events
+
+Shows real-time Docker events.
+
+24. Docker Diff
+
+See file changes
+
+docker diff container
+25. Docker System Commands
+
+Disk Usage
+
+docker system df
+
+Cleanup
+
+docker system prune
+
+Remove Everything
+
+docker system prune -a
+26. Docker Image Commands
+
+Prune
+
+docker image prune
+
+Remove Dangling Images
+
+docker image prune -a
+27. Docker Container Commands
+
+Prune
+
+docker container prune
+28. Docker Builder
+
+Clear Build Cache
+
+docker builder prune
+29. Docker Context
+
+List Contexts
+
+docker context ls
+
+Use Context
+
+docker context use default
+30. Docker Compose (Docker Compose V2)
+
+Start Services
+
+docker compose up
+
+Background
+
+docker compose up -d
+
+Stop
+
+docker compose down
+
+View Logs
+
+docker compose logs
+
+Follow Logs
+
+docker compose logs -f
+
+Restart
+
+docker compose restart
+
+Build
+
+docker compose build
+
+Rebuild
+
+docker compose up --build
+
+List Services
+
+docker compose ps
+
+Execute
+
+docker compose exec web bash
+
+Run One-Off Command
+
+docker compose run web npm install
+
+Scale Services
+
+docker compose up --scale web=3
+31. Docker Swarm
+
+Initialize
+
+docker swarm init
+
+Join
+
+docker swarm join
+
+Leave
+
+docker swarm leave
+
+List Nodes
+
+docker node ls
+
+Deploy Service
+
+docker service create nginx
+
+List Services
+
+docker service ls
+
+Remove Service
+
+docker service rm nginx
+32. Docker Registry
+
+Search Local Images
+
+docker image ls
+
+Inspect Registry Manifest
+
+docker manifest inspect nginx
+33. Most Common Interview Commands
+Command	Purpose
+docker pull	Download image
+docker run	Create and start a container
+docker ps	List running containers
+docker ps -a	List all containers
+docker images	List images
+docker exec -it	Open a shell in a running container
+docker logs	View container logs
+docker stop	Stop a container
+docker start	Start a stopped container
+docker restart	Restart a container
+docker rm	Remove a container
+docker rmi	Remove an image
+docker build	Build an image from a Dockerfile
+docker compose up	Start multi-container applications
+docker compose down	Stop and remove Compose resources
+docker network ls	List networks
+docker volume ls	List volumes
+docker inspect	Show detailed metadata
+docker stats	Monitor resource usage
+docker system prune	Remove unused Docker resources
+Recommended learning order
+Docker installation and docker info
+Images (pull, images, rmi)
+Containers (run, ps, start, stop, rm)
+Interactive work (exec, logs, cp, inspect)
+Volumes and bind mounts
+Networks
+Writing Dockerfiles and docker build
+Docker Compose
+Image publishing (tag, login, push)
+System cleanup and optimization
+Swarm basics (optional, if your focus is Kubernetes or modern orchestration)
