@@ -22,3 +22,4 @@ As I know Instagram is a chat application and it requires two-way communication,
 
 I'm feeling the part of actually building up a business case is very intimidating because I haven't an experience and there is no family background that I have lack of knowledge about business cases. And if I can work on that, there is no actually sense of end-to-end approaching or getting clients, how to manage, how to get them to pay for your work. It is feeling a little bit more intimidating, and if I am working on some projects, I don't, I want to know that how can I get the values out of it. I also want to know a little bit about writing the things fast, doing the things fast, and it will be a little bit difficult for me.
 
+Actual flow of browser flow?
