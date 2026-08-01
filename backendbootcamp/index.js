@@ -47,24 +47,27 @@
 // })
 
 // for the purpose of differentiating reading file synchronously and asynchronously
-const fs=require('fs');
-const express=require('express')
-const app=express();
+// const fs=require('fs');
+// const express=require('express')
+// const app=express();
 
-app.get('/sync',(req,res)=>{
-    fs.readFileSync('a.txt','utf-8',(err,data)=>{
-        console.log(data);
-    });
-    res.status(200).json({message:"synchronous endpoint"})
-})
-app.get('/async',(req,res)=>{
-    fs.readFile('a.txt',(err,data)=>{
-        console.log(data);
-    });
-    res.status(200).json({message:"asynchronous endpoint"})
-})
+// app.get('/sync',(req,res)=>{
+//     fs.readFileSync('a.txt','utf-8',(err,data)=>{
+//         console.log(data);
+//     });
+//     res.status(200).json({message:"synchronous endpoint"})
+// })
+// app.get('/async',(req,res)=>{
+//     fs.readFile('a.txt',(err,data)=>{
+//         console.log(data);
+//     });
+//     res.status(200).json({message:"asynchronous endpoint"})
+// })
 
 
-app.listen(5000,()=>{
-    console.log('running on 5000 port')
-})
+// app.listen(5000,()=>{
+//     console.log('running on 5000 port')
+// })
+
+
+//macrotask queue and microtask queue implementation
