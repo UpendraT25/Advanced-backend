@@ -71,3 +71,7 @@
 
 
 //macrotask queue and microtask queue implementation
+//syncronous->microtask->macrotask
+
+
+// basic implementation of multer
