@@ -75,3 +75,41 @@
 
 
 // basic implementation of multer
+
+const path=require('path')
+const express=require('express')
+const multer=require('multer')
+const fs=require('fs')
+
+const app=express();
+
+const storage= multer.diskStorage({
+    destination:(req,file,cb)=>{
+        cb(null,'/upload')
+    },
+    filename:(req,file,cb)=>{
+        const suffix=Date.now()+'_'+Math.random(Date.now())
+        const ext=path.extname(file.originalname)
+        cb(null,file.fieldname+'_'+suffix+ext)
+    }
+})
+
+//create middle ware for upload functionality
+const upload=multer({storage:storage});
+
+if(!fs.existsSync('./upload')){
+    fs.mkdirSync('./upload');
+}
+//write rest apis
+app.post('/upload-single',upload.single('file'),(req,res)=>{
+    if(!req.file){
+       return res.status(400).send("no file uploaded");
+    }
+    res.send({
+        message:"file uploaded successfull",
+        file:req.file
+    })
+})
+app.listen(5000,()=>{
+    console.log('server is running')
+})
