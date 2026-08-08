@@ -85,17 +85,17 @@ const app=express();
 
 const storage= multer.diskStorage({
     destination:(req,file,cb)=>{
-        cb(null,'/upload')
+        cb(null,'upload')
     },
     filename:(req,file,cb)=>{
-        const suffix=Date.now()+'_'+Math.random(Date.now())
+        const suffix=Date.now()+'_'+Math.round(Math.random())
         const ext=path.extname(file.originalname)
         cb(null,file.fieldname+'_'+suffix+ext)
     }
 })
 
 //create middle ware for upload functionality
-const upload=multer({storage:storage});
+const upload=multer({storage : storage});
 
 if(!fs.existsSync('./upload')){
     fs.mkdirSync('./upload');
