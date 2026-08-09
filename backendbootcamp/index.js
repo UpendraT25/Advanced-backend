@@ -113,3 +113,5 @@ app.post('/upload-single',upload.single('file'),(req,res)=>{
 app.listen(5000,()=>{
     console.log('server is running')
 })
+
+// streams implementation
