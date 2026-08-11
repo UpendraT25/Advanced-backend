@@ -119,6 +119,8 @@
 // streams implementation
 const fs=require('fs')
 
-const readable=fs.createReadStream('a.txt');
-const writable=fs.createWriteStream('b.txt');
+const readable=fs.createReadStream("bakery.mp4",{
+    highWaterMark:1024*1024
+});
+const writable=fs.createWriteStream('b.mp4');
 readable.pipe(writable);
