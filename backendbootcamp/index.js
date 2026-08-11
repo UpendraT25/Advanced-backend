@@ -76,42 +76,49 @@
 
 // basic implementation of multer
 
-const path=require('path')
-const express=require('express')
-const multer=require('multer')
-const fs=require('fs')
+// const path=require('path')
+// const express=require('express')
+// const multer=require('multer')
+// const fs=require('fs')
 
-const app=express();
+// const app=express();
 
-const storage= multer.diskStorage({
-    destination:(req,file,cb)=>{
-        cb(null,'upload')
-    },
-    filename:(req,file,cb)=>{
-        const suffix=Date.now()+'_'+Math.round(Math.random())
-        const ext=path.extname(file.originalname)
-        cb(null,file.fieldname+'_'+suffix+ext)
-    }
-})
+// const storage= multer.diskStorage({
+//     destination:(req,file,cb)=>{
+//         cb(null,'upload')
+//     },
+//     filename:(req,file,cb)=>{
+//         const suffix=Date.now()+'_'+Math.round(Math.random())
+//         const ext=path.extname(file.originalname)
+//         cb(null,file.fieldname+'_'+suffix+ext)
+//     }
+// })
 
 //create middle ware for upload functionality
-const upload=multer({storage : storage});
+// const upload=multer({storage : storage});
 
-if(!fs.existsSync('./upload')){
-    fs.mkdirSync('./upload');
-}
-//write rest apis
-app.post('/upload-single',upload.single('file'),(req,res)=>{
-    if(!req.file){
-       return res.status(400).send("no file uploaded");
-    }
-    res.send({
-        message:"file uploaded successfull",
-        file:req.file
-    })
-})
-app.listen(5000,()=>{
-    console.log('server is running')
-})
+// if(!fs.existsSync('./upload')){
+//     fs.mkdirSync('./upload');
+// }
+// //write rest apis
+// app.post('/upload-single',upload.single('file'),(req,res)=>{
+//     if(!req.file){
+//        return res.status(400).send("no file uploaded");
+//     }
+//     res.send({
+//         message:"file uploaded successfull",
+//         file:req.file
+//     })
+// })
+// app.listen(5000,()=>{
+//     console.log('server is running')
+// })
+
+
 
 // streams implementation
+const fs=require('fs')
+
+const readable=fs.createReadStream('a.txt');
+const writable=fs.createWriteStream('b.txt');
+readable.pipe(writable);
