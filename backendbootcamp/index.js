@@ -124,3 +124,5 @@ const readable=fs.createReadStream("bakery.mp4",{
 });
 const writable=fs.createWriteStream('b.mp4');
 readable.pipe(writable);
+
+//backpressure concept
