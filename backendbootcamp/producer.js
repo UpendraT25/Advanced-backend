@@ -1,2 +1,3 @@
-const stream=require('stream')
+const {reading}=require('stream')
 //buffer settings
+cos
