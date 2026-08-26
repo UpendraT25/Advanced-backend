@@ -117,12 +117,12 @@
 
 
 // streams implementation
-const fs=require('fs')
+// const fs=require('fs')
 
-const readable=fs.createReadStream("bakery.mp4",{
-    highWaterMark:1024*1024
-});
-const writable=fs.createWriteStream('b.mp4');
-readable.pipe(writable);
+// const readable=fs.createReadStream("bakery.mp4",{
+//     highWaterMark:1024*1024
+// });
+// const writable=fs.createWriteStream('b.mp4');
+// readable.pipe(writable);
 
 //backpressure concept
