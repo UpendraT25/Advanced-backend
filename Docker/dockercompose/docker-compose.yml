@@ -2,8 +2,7 @@ services:
   server:
     build:
       ./server
+    environment:
+      - Port=5000
     ports:
-      - 5000:5000
-  
-  client:
-    build:./client
+      - Port:5000
