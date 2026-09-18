@@ -1,8 +1,7 @@
 FROM node 
 WORKDIR /app
 
-COPY index.js index.js
-COPY package.json package.json
-RUN npm install
+COPY . .
+RUN npm install .
 CMD ["node","index.js"]
 
